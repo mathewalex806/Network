@@ -1,0 +1,38 @@
+{% extends "network/layout.html" %}
+
+{% block body %}
+
+    <h2>Register</h2>
+
+    {% if message %}
+
+        <div>{{ message }}</div>
+
+    {% endif %}
+
+    <div class="my-form bg-dark">
+        <h1>Register Form</h1>
+        <form action="{%url 'register'%}" method="post">
+            {% csrf_token %}
+          <div class="mb-3 mt-4">
+            <label name="username" class="form-label">Username</label>
+            <input type="text" class="form-control"  aria-describedby="emailHelp" name="username">
+          </div>
+          <div class="mb-3 mt-4">
+            <label  class="form-label">Email</label>
+            <input type="email" class="form-control" name="email">
+          </div>
+          <div class="mb-3 mt-4">
+            <label  class="form-label">Password</label>
+            <input type="password" class="form-control" name="password">
+          </div>
+          <div class="mb-3 mt-4">
+            <label  class="form-label"> Confirm Password</label>
+            <input type="password" class="form-control" name="confirmation">
+          </div>
+          <button type="submit" class="btn btn-light mt-3" value="Register">Register</button>
+        </form>
+        <p class="mt-4">Have an account? <a href="{% url 'login' %}">Login here!</a></p>
+    </div>
+
+{% endblock %}
