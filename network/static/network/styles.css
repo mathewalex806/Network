@@ -33,7 +33,7 @@ a:hover{
     box-shadow: none;
     border-color: #fff;
   }
-  .btn {
+  .btn btn-light mt-3 {
     border-radius: 0;
     width: 100%;
     font-weight: bold;
@@ -50,4 +50,24 @@ a:hover{
   .my-form p a:hover {
     color: #fff;
   }
-  
+
+.blockbody{
+  margin-left: 15px;
+  margin-top: 15px;
+}
+.cards {
+  margin: auto;
+  width: 70%;
+  padding: 10px;
+}
+.navbar ul li { 
+	padding: 0px 10px; 
+ } 
+textarea{
+  border: 1px solid black;
+  border-radius: 10px;
+}
+input{
+  border: 1px solid black;
+  border-radius: 4px;
+}

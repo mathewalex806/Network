@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link href="{% static 'network/styles.css' %}" rel="stylesheet">
     </head>
-    <body>
+    <body style="background-image: url(https://mcdn.wallpapersafari.com/medium/27/32/jt4AoG.jpg);">
 
         <nav class="navbar navbar-expand-lg bg-dark">
             <div class="container-fluid">
@@ -26,6 +26,9 @@
                     <a class="nav-link" href="{%url 'index'%}">All Posts</a>
                   </li>
                   {%if user.is_authenticated%}
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'new_post'%}">Create New Post</a>
+                  </li>
                   <li class="nav-item">
                     <a class="nav-link" href="">Following</a>
                   </li>

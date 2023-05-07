@@ -3,7 +3,9 @@
 {% block body %}
 <p></p>
     {% if message %}
-        <div>{{ message }}</div>
+    <div class="alert alert-danger" role="alert">
+      {{ message }}
+    </div>
     {% endif %}
 
     <div class="my-form bg-dark">
