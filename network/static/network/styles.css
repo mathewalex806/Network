@@ -11,7 +11,7 @@ a:hover{
 .my-form {
     padding: 2em;
     color: #fff;
-    max-width: 55vh;
+    max-width: 100vh;
     margin-inline: auto;
   }
   h1 {
@@ -64,10 +64,10 @@ a:hover{
 	padding: 0px 10px; 
  } 
 textarea{
-  border: 1px solid black;
+  border: 1px solid grey;
   border-radius: 10px;
 }
 input{
-  border: 1px solid black;
+  border: 1px solid grey;
   border-radius: 4px;
 }

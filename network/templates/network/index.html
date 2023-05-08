@@ -1,6 +1,7 @@
 {% extends "network/layout.html" %}
-
+{%load static%}
 {% block body %}
+<script href="{% static 'network/src.js' %}"></script>
 <div class="blockbody">
     <h2>
         All Posts
@@ -12,7 +13,8 @@
     <div class="card" style="width: 60rem;">
         <div class="card-body">
           <h5 class="card-title">{{i.title}}</h5>
-          <h6 class="card-subtitle mb-2 text-muted">User : {{i.user.username}}</h6>
+          <button class="btn btn-secondary" id="link_profile">{{i.user.username}}</button>
+          <p></p>
           <p class="card-subtitle mb-2 text-muted">{{i.timestamp}}</p>
           <p class="card-text">{{i.description}}</p>
           <p class="card-subtitle mb-2 text-muted">Likes : {{i.likes}}</p>

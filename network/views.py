@@ -7,7 +7,9 @@ from django.urls import reverse
 from .models import User, Post
 
 def index(request):
-    return render(request, "network/index.html", {"posts" : Post.objects.all()})
+    post = Post.objects.all()
+    posts = post.order_by("-timestamp").all()
+    return render(request, "network/index.html", {"posts" : posts})
 
 
 def login_view(request):

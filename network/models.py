@@ -3,7 +3,10 @@ from django.db import models
 
 
 class User(AbstractUser):
-    pass
+    followers = models.ManyToManyField('self', related_name='following', symmetrical=False, blank=True)
+
+    def __str__(self):
+        return f"{self.username} :::::::  {self.followers.count()} followers  ::::::::  {self.following.count()} following"
 
 
 ## Creating a Post model
