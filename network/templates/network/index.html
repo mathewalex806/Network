@@ -21,7 +21,23 @@
         </div>
       </div>
 </div>
+
 {% endfor %}
+<div class="blockbody">
+  <form action="{% url 'index'%}" method="post">
+    {% csrf_token %}
+  <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+      <li class="page-item">
+        <button class="page-link" type="submit" value="Previous" name="page">Latest Posts</button>
+      </li>
+      <li class="page-item">
+        <button class="page-link" type="submit" value="Next" name="page">Previous Posts</button>
+      </li>
+    </ul>
+  </nav>
+</form>
+</div>
 
 
 {% endblock %}

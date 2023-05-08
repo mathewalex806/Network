@@ -3,13 +3,26 @@ from django.db import IntegrityError
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
+from django.core.paginator import Paginator
 
 from .models import User, Post
 
 def index(request):
     post = Post.objects.all()
     posts = post.order_by("-timestamp").all()
-    return render(request, "network/index.html", {"posts" : posts})
+    paginator = Paginator(posts, 8) # Show 8 posts per page.
+    page_number = 1
+    if request.method =="POST":
+        page_number_next = request.POST['page']
+        if page_number_next == "Next":
+            page_number += 1
+        if page_number_next == "Previous":
+            page_number = 1
+        
+
+    page_obj = paginator.get_page(page_number)
+    query= page_obj.object_list
+    return render(request, 'network/index.html', { "posts" : query})
 
 
 def login_view(request):
