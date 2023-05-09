@@ -1,0 +1,34 @@
+{% extends 'network/layout.html'%}
+{% load static%}
+{%block body%}
+
+{% if user.is_authenticated%}
+<div class="blockbody">
+    <h2>Following <span class="badge bg-secondary" style="color: white;">{{no}}</span></h2>
+</div>
+{% for i in posts%}
+<div class="cards">
+    <div class="card" style="width: 60rem;">
+        <div class="card-body">
+          <h5 class="card-title">{{i.title}}</h5>
+          <a href="{% url 'profile' i.user.username %}" style="color: rgb(142, 141, 141);"> <strong>{{i.user.username}}</strong></a>
+          <p></p>
+          <p class="card-subtitle mb-2 text-muted">{{i.timestamp}}</p>
+          <p class="card-text">{{i.description}}</p>
+          <p class="card-subtitle mb-2 text-muted">Likes : {{i.likes}}</p>
+        </div>
+      </div>
+</div>
+{% endfor %}
+{%else%}
+<div class="blockbody">
+    <h2>
+        Following
+    </h2>
+    <hr>
+    <p>
+        Please login to view your following posts.
+    </p>
+</div>
+{%endif%}
+{%endblock%}

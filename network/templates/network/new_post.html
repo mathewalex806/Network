@@ -1,6 +1,7 @@
 {% extends 'network/layout.html'%}
 {% load static%}
 {%block body%}
+{% if user.is_authenticated%}
 <div class="blockbody">
     <h2>
         Create New Post
@@ -15,5 +16,16 @@
         <button type="submit" class="btn btn-dark">Submit</button>
     </form>
 </div>
+{%else%}
+<div class="blockbody">
+    <h2>
+        Create New Post
+    </h2>
+    <hr>
+    <p>
+        Please login to create a new post.
+    </p>
+</div>
+{%endif%}
 
 {%endblock%}
