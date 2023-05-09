@@ -90,4 +90,5 @@ def profile(request, username):
     user = User.objects.get(username= username)
     post = Post.objects.filter(user = User.objects.get(username = username))
     posts = post.order_by("-timestamp").all()
-    return render(request, "network/profile.html", {"user_obj": user, "posts": posts})
+    no = len(posts)
+    return render(request, "network/profile.html", {"user_obj": user, "posts": posts, "no": no})
