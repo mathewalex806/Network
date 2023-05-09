@@ -12,7 +12,11 @@
       <p class="card-text">Email : {{user_obj.email}}</p>
       <p class="card-text">Followers : {{user_obj.followers.count}} <span style="margin-left: 20px;"></span>Following : {{user_obj.following.count}}</p>
       {% if user_obj.username != user.username and user.is_authenticated%}
+      {% if user.username in follow%}
+      <a href="#" class="btn btn-danger">UnFollow</a>
+      {%else%}
       <a href="#" class="btn btn-primary">Follow</a>
+      {%endif%}
       {%endif%}
     </div>
     <div class="card-footer text-muted">

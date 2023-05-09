@@ -91,7 +91,11 @@ def profile(request, username):
     post = Post.objects.filter(user = User.objects.get(username = username))
     posts = post.order_by("-timestamp").all()
     no = len(posts)
-    return render(request, "network/profile.html", {"user_obj": user, "posts": posts, "no": no})
+    follow = user.followers.all()
+    a=[]
+    for i in follow:
+        a.append(i.username)
+    return render(request, "network/profile.html", {"user_obj": user, "posts": posts, "no": no, "follow": a})
 
 def following(request):
     user = User.objects.get(username = request.user.username)
