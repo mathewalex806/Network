@@ -13,7 +13,7 @@
     <div class="card" style="width: 60rem;">
         <div class="card-body">
           <h5 class="card-title">{{i.title}}</h5>
-          <button class="btn btn-secondary" id="link_profile">{{i.user.username}}</button>
+          <a href="{% url 'profile' i.user.username %}" style="color: rgb(142, 141, 141);"> <strong>{{i.user.username}}</strong></a>
           <p></p>
           <p class="card-subtitle mb-2 text-muted">{{i.timestamp}}</p>
           <p class="card-text">{{i.description}}</p>

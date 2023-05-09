@@ -4,10 +4,35 @@
 {%block body%}
 <div class="blockbody">
     <h2>
-        Profile
+        Profile : {{user_obj.username}}
     </h2>
     <hr>
-
 </div>
+<div class="card text-center">
+    <div class="card-header">
+      Featured
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Special title treatment</h5>
+      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+    <div class="card-footer text-muted">
+      2 days ago
+    </div>
+  </div>
+{% for i in posts%}
+<div class="cards">
+    <div class="card" style="width: 60rem;">
+        <div class="card-body">
+          <h5 class="card-title">{{i.title}}</h5>
+          <p class="card-subtitle mb-2 text-muted">{{i.timestamp}}</p>
+          <p class="card-text">{{i.description}}</p>
+          <p class="card-subtitle mb-2 text-muted">Likes : {{i.likes}}</p>
+        </div>
+      </div>
+</div>
+
+{% endfor %}
 
 {%endblock%}
