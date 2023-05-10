@@ -18,7 +18,8 @@ icon.onclick = function(){
     <div class="card" style="width: 60rem;">
         <div class="card-body">
           <h5 class="card-title">{{i.title}}</h5>
-          <a href="{% url 'profile' i.user.username %}" style="color: rgb(142, 141, 141);"><img src="{{i.pic}}" alt="Avatar" class="avatar"> <strong>{{i.user.username}}</strong></a>
+          <img src="{{i.user.pic}}" class="avatar"> 
+          <a href="{% url 'profile' i.user.username %}" style="color: rgb(142, 141, 141);"><strong>{{i.user.username}}</strong></a>
           <p></p>
           <p class="card-subtitle mb-2 text-muted">{{i.timestamp}}</p>
           <p class="card-text">{{i.description}}</p>
