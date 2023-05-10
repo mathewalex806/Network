@@ -4,6 +4,7 @@ from django.db import models
 
 class User(AbstractUser):
     followers = models.ManyToManyField('self', related_name='following', symmetrical=False, blank=True)
+    pic = models.CharField(max_length=500, default="https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png")
 
     def __str__(self):
         return f"{self.username}"

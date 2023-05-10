@@ -1,7 +1,12 @@
 {% extends "network/layout.html" %}
 {%load static%}
 {% block body %}
-<script href="{% static 'network/src.js' %}"></script>
+<script>
+  let icon = document.querySelector('ion-icon');
+icon.onclick = function(){
+  icon.classList.toggle('active');
+}
+</script>
 <div class="blockbody">
     <h2>
         All Posts
@@ -13,11 +18,17 @@
     <div class="card" style="width: 60rem;">
         <div class="card-body">
           <h5 class="card-title">{{i.title}}</h5>
-          <a href="{% url 'profile' i.user.username %}" style="color: rgb(142, 141, 141);"> <strong>{{i.user.username}}</strong></a>
+          <a href="{% url 'profile' i.user.username %}" style="color: rgb(142, 141, 141);"><img src="{{i.pic}}" alt="Avatar" class="avatar"> <strong>{{i.user.username}}</strong></a>
           <p></p>
           <p class="card-subtitle mb-2 text-muted">{{i.timestamp}}</p>
           <p class="card-text">{{i.description}}</p>
-          <p class="card-subtitle mb-2 text-muted">Likes : {{i.likes}}</p>
+          {% if user.is_authenticated%}
+          <div class='large-font text-center top-20'>
+            <ion-icon name="heart">
+              <div class='red-bg'></div>
+            </ion-icon>
+          </div>
+          {%endif%}
         </div>
       </div>
 </div>
