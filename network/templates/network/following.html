@@ -4,10 +4,24 @@
 
 {% if user.is_authenticated%}
 <div class="blockbody">
-    <h2>Following <span class="badge bg-secondary" style="color: white;">{{no}}</span></h2>
+    <h3>Posts <span class="badge bg-secondary" style="color: white;">{{no}}</span></h3>
 </div>
+
+
+<div style="margin-left: 1200px; margin-right: auto;">
+<h4>Following Users :</h4>
+{%for j in following_users%}
+
+    <ul>
+    <li><h6>{{j.username}}</h6></li>
+</ul>
+{%endfor%}
+</div>
+
+
+
 {% for i in posts%}
-<div class="cards">
+<div class="cards" style="margin-top: -100px; margin-left: 150px;">
     <div class="card" style="width: 60rem;">
         <div class="card-body">
           <h5 class="card-title">{{i.title}}</h5>
@@ -20,6 +34,10 @@
       </div>
 </div>
 {% endfor %}
+
+
+
+
 {%else%}
 <div class="blockbody">
     <h2>

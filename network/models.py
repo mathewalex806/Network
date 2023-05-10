@@ -6,7 +6,7 @@ class User(AbstractUser):
     followers = models.ManyToManyField('self', related_name='following', symmetrical=False, blank=True)
 
     def __str__(self):
-        return f"{self.username} :::::::  {self.followers.count()} followers  ::::::::  {self.following.count()} following"
+        return f"{self.username}"
 
 
 ## Creating a Post model

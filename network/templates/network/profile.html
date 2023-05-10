@@ -10,12 +10,20 @@
     <div class="card-body">
       <h5 class="card-title">Username : {{user_obj.username}}</h5>
       <p class="card-text">Email : {{user_obj.email}}</p>
-      <p class="card-text">Followers : {{user_obj.followers.count}} <span style="margin-left: 20px;"></span>Following : {{user_obj.following.count}}</p>
+      <p class="card-text">Followers : {{user_obj.followers.count}} <span style="margin-left: 40px;"></span>Following : {{user_obj.following.count}}</p>
       {% if user_obj.username != user.username and user.is_authenticated%}
       {% if user.username in follow%}
-      <a href="#" class="btn btn-danger">UnFollow</a>
+      <form action="{%url 'follow_unfollow'%}" method="post">
+    {%csrf_token%}
+    <input type="hidden" name="username" value="{{user_obj.username}}">
+      <button class="btn btn-danger" type="submit" name="follow" value="unfollow">UnFollow</button>
+      </form>
       {%else%}
-      <a href="#" class="btn btn-primary">Follow</a>
+      <form action="{%url 'follow_unfollow'%}" method="post">
+      {%csrf_token%}
+      <input type="hidden" name="username" value="{{user_obj.username}}">
+      <button class="btn btn-primary" type="submit" name="follow" value="follow">Follow</button>
+      </form>
       {%endif%}
       {%endif%}
     </div>

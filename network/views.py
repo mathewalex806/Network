@@ -99,7 +99,23 @@ def profile(request, username):
 
 def following(request):
     user = User.objects.get(username = request.user.username)
-    following = user.following.all()
-    following_no = len(following)
-    posts = Post.objects.filter(user__in = following).order_by("-timestamp").all()
-    return render(request, "network/following.html", {"posts": posts, "no": following_no})
+    following_users = user.following.all()
+    posts = Post.objects.filter(user__in = following_users).order_by("-timestamp").all()
+    following_no = len(posts)
+    return render(request, "network/following.html", {"posts": posts, "no": following_no, 'following_users': following_users})
+
+def follow_unfollow(request):
+    if request.method == "POST":
+        action = request.POST["follow"]
+        if action == 'unfollow':
+            username = request.POST["username"]
+            user = User.objects.get(username = username)
+            request.user.following.remove(user)
+            return HttpResponseRedirect(reverse("profile", args=(username,)))
+        if action == 'follow':
+            username = request.POST["username"]
+            user = User.objects.get(username = username)
+            request.user.following.add(user)
+            return HttpResponseRedirect(reverse("profile", args=(username,)))
+    else:
+        return HttpResponseRedirect(reverse("index"))
