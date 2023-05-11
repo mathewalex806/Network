@@ -4,6 +4,8 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
 from django.core.paginator import Paginator
+import json
+from django.http import JsonResponse
 
 from .models import User, Post
 
@@ -48,7 +50,6 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     return HttpResponseRedirect(reverse("index"))
-
 
 def register(request):
     if request.method == "POST":
@@ -120,3 +121,11 @@ def follow_unfollow(request):
             return HttpResponseRedirect(reverse("profile", args=(username,)))
     else:
         return HttpResponseRedirect(reverse("index"))
+    
+def edit(request, post_id):
+    if request.method == "POST":
+        data = json.loads(request.body)
+        edit_post = Post.objects.get(id = post_id)
+        edit_post.description = data["description"]
+        edit_post.save()
+        return JsonResponse({"message": "Post edited successfully."}, status=201)
