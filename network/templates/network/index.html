@@ -2,16 +2,15 @@
 {%load static%}
 {% block body %}
 <script>
-  let icon = document.querySelector('ion-icon');
-icon.onclick = function(){
-  icon.classList.toggle('active');
-}
+  function updatepost(id){
+     let decript = document.getElementById("message-text").value
+    alert(`${id} ${decript}`);
+  }
 </script>
 <div class="blockbody">
     <h2>
         All Posts
     </h2>
-    <hr>
 </div>
 {% for i in posts%}
 <div class="cards">
@@ -19,17 +18,39 @@ icon.onclick = function(){
         <div class="card-body">
           <h5 class="card-title">{{i.title}}</h5>
           <img src="{{i.user.pic}}" class="avatar"> 
-          <a href="{% url 'profile' i.user.username %}" style="color: rgb(142, 141, 141);"><strong>{{i.user.username}}</strong></a>
+          <a href="{% url 'profile' i.user.username %}" class="subtle_link"><strong>{{i.user.username}}</strong></a>
           <p></p>
           <p class="card-subtitle mb-2 text-muted">{{i.timestamp}}</p>
           <p class="card-text">{{i.description}}</p>
-          {% if user.is_authenticated%}
-          <div class='large-font text-center top-20'>
-            <ion-icon name="heart">
-              <div class='red-bg'></div>
-            </ion-icon>
-          </div>
-          {%endif%}
+          {% if i.user.username == user.username%}
+          <p>
+            <a href="#" class="subtle_link" style="float: right;"data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Edit</a> 
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">New message</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <form>
+                      <div class="mb-3">
+                        <label for="recipient-name" class="col-form-label">Title:  {{i.title}}</label>
+                      </div>
+                      <div class="mb-3">
+                        <label for="message-text" class="col-form-label">Description: </label>
+                        <textarea class="form-control" id="message-text" rows="20">{{i.description}}</textarea>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="updatepost({{i.id}})">Update Post</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endif %}
         </div>
       </div>
 </div>

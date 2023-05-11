@@ -77,3 +77,10 @@ input{
   height: 50px;
   border-radius: 50%;
 }
+.subtle_link{
+  color: grey;
+}
+.subtle_link:hover{
+  color: gray;
+  text-decoration: underline;
+}
