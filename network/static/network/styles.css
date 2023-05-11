@@ -79,6 +79,7 @@ input{
 }
 .subtle_link{
   color: grey;
+  text-decoration: none;
 }
 .subtle_link:hover{
   color: gray;

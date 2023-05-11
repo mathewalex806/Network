@@ -7,7 +7,7 @@ from django.core.paginator import Paginator
 import json
 from django.http import JsonResponse
 
-from .models import User, Post
+from .models import User, Post, Like
 
 def index(request):
     post = Post.objects.all()
@@ -45,8 +45,7 @@ def login_view(request):
             })
     else:
         return render(request, "network/login.html")
-
-
+    
 def logout_view(request):
     logout(request)
     return HttpResponseRedirect(reverse("index"))

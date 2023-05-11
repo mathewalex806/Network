@@ -21,15 +21,14 @@
 
 
 {% for i in posts%}
-<div class="cards" style="margin-top: -100px; margin-left: 150px;">
+<div class="cards" style="margin-top: -10px; margin-left: 150px;">
     <div class="card" style="width: 60rem;">
         <div class="card-body">
           <h5 class="card-title">{{i.title}}</h5>
-          <a href="{% url 'profile' i.user.username %}" style="color: rgb(142, 141, 141);"> <strong>{{i.user.username}}</strong></a>
+          <a href="{% url 'profile' i.user.username %}" class="subtle_link"> <strong>{{i.user.username}}</strong></a>
           <p></p>
           <p class="card-subtitle mb-2 text-muted">{{i.timestamp}}</p>
           <p class="card-text">{{i.description}}</p>
-          <p class="card-subtitle mb-2 text-muted">Likes : {{i.likes}}</p>
         </div>
       </div>
 </div>
