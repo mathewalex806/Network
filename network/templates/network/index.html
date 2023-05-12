@@ -24,7 +24,7 @@
       console.log(result)
       location.reload()
     })
-  }
+}
 </script>
 <div class="blockbody">
     <h2>
@@ -42,7 +42,7 @@
           <p class="card-subtitle mb-2 text-muted">{{i.timestamp}}</p>
           <p class="card-text">{{i.description}}</p>
           {% if i.user.username == user.username%}
-          <p>
+          <p></p>  
             <a href="#" class="subtle_link" style="float: right;"data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Edit</a> 
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog">
@@ -64,7 +64,7 @@
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" data-bs-dismiss='model' onclick="updatepost({{i.id}} )">Update Post</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="updatepost({{i.id}} )">Update Post</button>
                   </div>
                 </div>
               </div>
