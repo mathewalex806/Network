@@ -25,6 +25,40 @@
       location.reload()
     })
 }
+
+function likeHandler(id,whoYouLiked){
+  const btn = document.getElementById(`${id}`)
+  btn.classList.remove("fa-thumbs-down");
+  btn.classList.remove("fa-thumbs-up");
+  if (whoYouLiked.indexOf(id) >= 0){
+    var liked = true;
+  }
+  else{
+    var liked = false;
+  }
+  if (liked === true){
+    fetch(`/remove_like/${id}`, {
+      method : 'POST',
+      })
+      .then(response => response.json)
+      .then(result => {
+        console.log(result)
+        btn.classList.add("fa-thumbs-up");
+      })
+    }
+  
+  else {
+    fetch(`/add_like/${id}`, {
+      method : 'POST'
+      })
+      .then(response => response.json)
+      .then(result => {
+        console.log(result)
+        btn.classList.add("fa-thumbs-down");
+      })
+    }
+    liked = !liked;
+  }
 </script>
 <div class="blockbody">
     <h2>
@@ -70,6 +104,11 @@
               </div>
             </div>
           {% endif %}
+          {% if i.id in whoYouLiked%}
+          <button class="btn btn-secondary fa fa-thumbs-down" id="{{i.id}}" onclick="likeHandler({{i.id}},{{whoYouLiked}})"></button>
+          {%else%}
+          <button class="btn btn-secondary fa fa-thumbs-up" id="{{i.id}}" onclick="likeHandler({{i.id}},{{whoYouLiked}})"></button>
+          {%endif%}
         </div>
       </div>
 </div>

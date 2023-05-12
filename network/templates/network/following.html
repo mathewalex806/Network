@@ -7,22 +7,9 @@
     <h3>Posts <span class="badge bg-secondary" style="color: white;">{{no}}</span></h3>
 </div>
 
-
-<div style="margin-left: 1200px; margin-right: auto;">
-<h4>Following Users :</h4>
-{%for j in following_users%}
-
-    <ul>
-    <li><h6>{{j.username}}</h6></li>
-</ul>
-{%endfor%}
-</div>
-
-
-
 {% for i in posts%}
-<div class="cards" style="margin-top: -10px; margin-left: 150px;">
-    <div class="card" style="width: 60rem;">
+<div class="cards" style=" margin-left: 150px;">
+    <div class="card" style="width: 50rem;">
         <div class="card-body">
           <h5 class="card-title">{{i.title}}</h5>
           <a href="{% url 'profile' i.user.username %}" class="subtle_link"> <strong>{{i.user.username}}</strong></a>
@@ -33,6 +20,16 @@
       </div>
 </div>
 {% endfor %}
+
+<div style="margin-left: 1050px; margin-right: auto; margin-top: -1400px;">
+    <h4>Following Users :</h4>
+    {%for j in following_users%}
+    
+        <ul>
+        <li><h6>{{j.username}}</h6></li>
+    </ul>
+    {%endfor%}
+    </div>
 
 
 

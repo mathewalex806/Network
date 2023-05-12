@@ -20,11 +20,21 @@ def index(request):
             page_number += 1
         if page_number_next == "Previous":
             page_number = 1
-        
+    
+    allLikes = Like.objects.all()
+    whoYouLiked = []
+    try:
+        for i in allLikes:
+            if i.user == request.user:
+                whoYouLiked.append(i.post.id)
+    except:
+        pass
+
+
 
     page_obj = paginator.get_page(page_number)
     query= page_obj.object_list
-    return render(request, 'network/index.html', { "posts" : query})
+    return render(request, 'network/index.html', { "posts" : query,  "whoYouLiked": whoYouLiked})
 
 
 def login_view(request):
@@ -128,3 +138,19 @@ def edit(request, post_id):
         edit_post.description = data["description"]
         edit_post.save()
         return JsonResponse({"message": "Post edited successfully."}, status=201)
+
+def remove_like(request, post_id):
+    if request.method == "POST":
+        post = Post.objects.get(id = post_id)
+        user  = User.objects.get(username = request.user.username)
+        like  = Like.objects.filter(user = user, post = post)
+        like.delete()
+        return JsonResponse({"message": "Like removed successfully."}, status=201)
+    
+def add_like(request, post_id):
+    if request.method == "POST":
+        post = Post.objects.get(id = post_id)
+        user  = User.objects.get(username = request.user.username)
+        like = Like(user = user, post = post)
+        like.save()
+        return JsonResponse({"message": "Like added successfully."}, status=201)
