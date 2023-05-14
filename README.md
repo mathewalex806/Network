@@ -3,7 +3,7 @@ Tweetly is a web application designed to provide users with a platform for socia
 
 Key Features:
 
-User Registration and Authentication: Users can create accounts and log in securely to access the social network's features.
+User Registration and Authentication: Users can create accounts and log in securely to access the Tweetly's features.
 New Post Creation: Signed-in users can write and submit text-based posts through a dedicated form or a "New Post" box on the main page.
 All Posts Display: The "All Posts" page presents users with a chronological feed of all posts from all users, with the most recent posts appearing at the top. Each post includes the username, content, timestamp, and number of likes.
 User Profile Pages: Clicking on a username leads to the corresponding user's profile page. This page showcases the user's posts in reverse chronological order and displays the number of followers and followings the user has.
@@ -15,6 +15,6 @@ Like/Unlike Posts: Users can interact with posts by liking or unliking them. Cli
 Languages Used:
 
 Python: The backend of the social network is built using Python. It handles user authentication, post creation, data storage, and retrieval.
-JavaScript: JavaScript is used extensively to enhance the user experience and implement dynamic features such as editing posts, updating like counts, and providing seamless interactions without page reloads.
+JavaScript: JavaScript is used extensively to enhance the user experience and implement API calls  such as editing posts, updating like counts, and providing seamless interactions without page reloads.
 HTML: The structure and layout of the web pages are created using HTML, ensuring proper formatting and organization of the content.
 CSS: CSS is utilized for styling and customizing the appearance of the web pages, ensuring an attractive and user-friendly interface.
