@@ -1,5 +1,5 @@
-# Network
-The social network project is a web application designed to provide users with a platform for social interaction, content sharing, and connection with other users. It is built using a combination of Python, JavaScript, HTML, and CSS.
+# Tweetly
+Tweetly is a web application designed to provide users with a platform for social interaction, content sharing, and connection with other users. It is built using a combination of Python, JavaScript, HTML, and CSS.
 
 Key Features:
 
